@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструкция ЭПД - Электронные перевозочные документы</title>
+    <title>Инструкция ЭПД</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -17,8 +17,6 @@
             --pastel-red: #e53935;
             --pastel-blue: #1e88e5;
             --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
             --text-primary: #1a1a2e;
             --text-secondary: #4a4a6a;
         }
@@ -30,12 +28,57 @@
             animation: gradientBG 15s ease infinite;
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .tab {
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.2), rgba(30, 136, 229, 0.2));
+            border-color: var(--pastel-blue);
+            color: var(--pastel-blue);
         }
 
         .container {
@@ -46,68 +89,58 @@
 
         header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             padding: 50px 40px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            width: 100%;
         }
 
         h1 {
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: linear-gradient(135deg, #d32f2f, #1976d2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -2px;
-            width: 100%;
-            display: block;
         }
 
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
-            font-weight: 400;
         }
 
         .section {
-            margin-bottom: 60px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .section:hover {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 600;
-            margin-bottom: 28px;
+            margin-bottom: 25px;
             color: var(--text-primary);
         }
 
         .docs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
         }
 
         .doc-item {
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 16px;
-            border-left: 5px solid var(--pastel-blue);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border-left: 4px solid var(--pastel-blue);
             transition: all 0.3s ease;
         }
 
@@ -116,67 +149,85 @@
         }
 
         .doc-item:hover {
-            background: rgba(255, 255, 255, 0.95);
-            transform: translateX(6px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .doc-abbr {
             font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            margin-bottom: 6px;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
         }
 
         .doc-name {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
-        .table-container {
+        .table-wrapper {
             overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 16px;
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        thead {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.15), rgba(30, 136, 229, 0.15));
         }
 
         thead th {
-            padding: 20px 24px;
+            padding: 18px 20px;
             text-align: left;
             font-weight: 600;
             color: var(--text-primary);
-            background: linear-gradient(135deg, rgba(229, 57, 53, 0.15), rgba(30, 136, 229, 0.15));
             border-bottom: 2px solid rgba(255, 255, 255, 0.6);
-            font-size: 1rem;
         }
 
         thead th:first-child {
-            width: 40%;
-        }
-
-        tbody td {
-            padding: 20px 24px;
-            color: var(--text-secondary);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            font-size: 0.95rem;
-            vertical-align: top;
-            transition: background 0.3s ease;
+            width: 35%;
         }
 
         tbody tr {
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            background: white;
+        }
+
+        tbody tr::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(30, 136, 229, 0.2), rgba(229, 57, 53, 0.15), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
         }
 
         tbody tr:hover {
-            background: rgba(232, 245, 253, 0.6);
+            background: linear-gradient(90deg, rgba(232, 245, 253, 0.8), rgba(255, 235, 238, 0.6));
+            box-shadow: 0 2px 8px rgba(30, 136, 229, 0.2);
+            transform: scale(1.01);
+        }
+
+        tbody td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            vertical-align: top;
         }
 
         tbody tr:last-child td {
@@ -186,23 +237,15 @@
         .doc-name-cell {
             font-weight: 600;
             color: var(--text-primary);
-            font-size: 0.98rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .doc-name-cell:hover {
-            color: var(--pastel-blue);
         }
 
         .tag {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-size: 0.82rem;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-right: 6px;
-            margin-bottom: 4px;
+            margin: 2px;
         }
 
         .tag-final {
@@ -222,102 +265,83 @@
 
         .screenshots-grid {
             display: grid;
-            gap: 40px;
+            gap: 30px;
         }
 
         .screenshot-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            scroll-margin-top: 120px;
+            transition: all 0.4s ease;
+            scroll-margin-top: 100px;
         }
 
         .screenshot-item.expanded {
             box-shadow: 0 20px 60px rgba(30, 136, 229, 0.25);
             border-color: var(--pastel-blue);
-            transform: scale(1.02);
-        }
-
-        .screenshot-item.expanded img {
-            filter: brightness(1.05);
-        }
-
-        .screenshot-item:hover {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            transform: translateY(-4px);
+            transform: scale(1.01);
         }
 
         .screenshot-item img {
             width: 100%;
             height: auto;
             display: block;
-            transition: all 0.5s ease;
         }
 
         .screenshot-caption {
-            padding: 20px 24px;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 18px 20px;
+            background: white;
             border-top: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         .screenshot-number {
             display: inline-block;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             background: linear-gradient(135deg, #e53935, #1e88e5);
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 32px;
+            line-height: 30px;
             font-weight: 600;
-            font-size: 1rem;
-            margin-right: 14px;
+            font-size: 0.9rem;
+            margin-right: 12px;
         }
 
         .screenshot-title {
             font-weight: 600;
-            color: var(--text-primary);
             display: inline-flex;
             align-items: center;
-            font-size: 1.1rem;
         }
 
         .screenshot-desc {
-            margin-top: 10px;
+            margin-top: 8px;
             color: var(--text-secondary);
-            font-size: 1rem;
-            padding-left: 46px;
-        }
-
-        .highlight-animation {
-            animation: highlightPulse 2s ease;
-        }
-
-        @keyframes highlightPulse {
-            0% { box-shadow: 0 0 0 0 rgba(30, 136, 229, 0.7); }
-            50% { box-shadow: 0 0 0 20px rgba(30, 136, 229, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(30, 136, 229, 0); }
+            padding-left: 42px;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: var(--text-secondary);
-            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 1.4rem; }
-            .section { padding: 24px; }
-            thead th, tbody td { padding: 12px 16px; font-size: 0.9rem; }
+            h1 { font-size: 2.5rem; }
+            .nav-tabs { padding: 15px 20px; }
+            .section { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <nav class="nav-tabs">
+        <img src="logo.png" alt="Logo" class="logo">
+        <a href="index.html" class="tab active">ЭПД</a>
+        <a href="edox.html" class="tab">EDOX</a>
+    </nav>
+
     <div class="container">
         <header>
             <h1>Инструкция ЭПД</h1>
@@ -360,7 +384,7 @@
 
         <section class="section">
             <h2>Документы и триггеры для их формирования</h2>
-            <div class="table-container">
+            <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
@@ -369,67 +393,63 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-screenshot="screenshot-1">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-1')">
+                        <tr onclick="scrollToScreenshot('screenshot-1')">
+                            <td class="doc-name-cell">
                                 Черновик Поручения Экспедитора (ЭПЭ) для клиента
                                 <span class="tag tag-draft">Черновик</span>
                                 <span class="tag tag-title">Т1</span>
                             </td>
                             <td>Формируется автоматически, когда заявка перешла на статус «подтверждена»</td>
                         </tr>
-                        <tr data-screenshot="screenshot-1">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-1')">
+                        <tr onclick="scrollToScreenshot('screenshot-1')">
+                            <td class="doc-name-cell">
                                 Чистовик Поручения Экспедитора (ЭПЭ) для клиента
                                 <span class="tag tag-final">Чистовик</span>
                                 <span class="tag tag-title">Т2</span>
                             </td>
                             <td>Подпись Т2 ЭПЭ происходит автоматически после того, как клиент подпишет свой титул Т1 ЭПЭ</td>
                         </tr>
-                        <tr data-screenshot="screenshot-2">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-2')">
+                        <tr onclick="scrollToScreenshot('screenshot-2')">
+                            <td class="doc-name-cell">
                                 Чистовик Экспедиторской расписки для клиента (ЭЭР)
                                 <span class="tag tag-final">Чистовик</span>
                             </td>
-                            <td>
-                                ЭПЭ Т1 подписан клиентом;<br>
-                                При плече «забор» в поездке есть факт прибытия водителя на загрузку;<br>
-                                При самопривозе силами клиента есть спланированное следующее плечо
-                            </td>
+                            <td>ЭПЭ Т1 подписан клиентом; При плече «забор» в поездке есть факт прибытия водителя на загрузку; При самопривозе силами клиента есть спланированное следующее плечо</td>
                         </tr>
-                        <tr data-screenshot="screenshot-3">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-3')">
+                        <tr onclick="scrollToScreenshot('screenshot-3')">
+                            <td class="doc-name-cell">
                                 Чистовик Транспортной накладной (ЭТрН)
                                 <span class="tag tag-final">Чистовик</span>
                                 <span class="tag tag-title">Т1</span>
                             </td>
                             <td>Формируется в момент появления данных в поездке об убытии водителя с загрузки</td>
                         </tr>
-                        <tr data-screenshot="screenshot-4">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-4')">
+                        <tr onclick="scrollToScreenshot('screenshot-4')">
+                            <td class="doc-name-cell">
                                 Черновик Транспортной накладной (ЭТрН)
                                 <span class="tag tag-draft">Черновик</span>
                                 <span class="tag tag-title">Т1</span>
                             </td>
                             <td>Формируется при двойной экспедиции, т.е. перевозчик на портале внёс информацию, что водитель не в штате, и указал реального перевозчика, и в момент появления данных в поездке об убытии водителя с загрузки</td>
                         </tr>
-                        <tr data-screenshot="screenshot-5">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-5')">
+                        <tr onclick="scrollToScreenshot('screenshot-5')">
+                            <td class="doc-name-cell">
                                 Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика
                                 <span class="tag tag-final">Чистовик</span>
                                 <span class="tag tag-title">Т1</span>
                             </td>
                             <td>Формируется в момент появления данных в поездке по водителю</td>
                         </tr>
-                        <tr data-screenshot="screenshot-6">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-6')">
+                        <tr onclick="scrollToScreenshot('screenshot-6')">
+                            <td class="doc-name-cell">
                                 Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2
                                 <span class="tag tag-final">Чистовик</span>
                                 <span class="tag tag-title">Т1</span>
                             </td>
                             <td>Формируется при двойной экспедиции, т.е. перевозчик на портале внёс информацию, что водитель не в штате, и указал реального перевозчика</td>
                         </tr>
-                        <tr data-screenshot="screenshot-7">
-                            <td class="doc-name-cell" onclick="scrollToScreenshot('screenshot-7')">
+                        <tr onclick="scrollToScreenshot('screenshot-7')">
+                            <td class="doc-name-cell">
                                 Черновик Экспедиторской расписки (ЭЭР) для Экспедитора 2
                                 <span class="tag tag-draft">Черновик</span>
                             </td>
@@ -444,18 +464,18 @@
             <h2>Как проверить формирование документов</h2>
             <div class="screenshots-grid">
                 <div class="screenshot-item" id="screenshot-1">
-                    <img src="screenshot1.png" alt="Поручение экспедитору в ТМС">
+                    <img src="screenshot1.png" alt="Поручение экспедитору">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">1</span>
-                            Поручение экспедитору — Титул 1 (Черновик) и Титул 2 (Чистовик)
+                            Поручение экспедитору — Титул 1 и Титул 2
                         </div>
                         <div class="screenshot-desc">ТМС: Зайти по заявке в раздел «Документы»</div>
                     </div>
                 </div>
 
                 <div class="screenshot-item" id="screenshot-2">
-                    <img src="screenshot2.png" alt="Чистовик ЭЭР для клиента">
+                    <img src="screenshot2.png" alt="ЭЭР для клиента">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">2</span>
@@ -466,7 +486,7 @@
                 </div>
 
                 <div class="screenshot-item" id="screenshot-3">
-                    <img src="screenshot3.png" alt="Чистовик ЭТрН Титул 1">
+                    <img src="screenshot3.png" alt="ЭТрН чистовик">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">3</span>
@@ -477,7 +497,7 @@
                 </div>
 
                 <div class="screenshot-item" id="screenshot-4">
-                    <img src="screenshot4.png" alt="Черновик ЭТрН Титул 1">
+                    <img src="screenshot4.png" alt="ЭТрН черновик">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">4</span>
@@ -488,29 +508,29 @@
                 </div>
 
                 <div class="screenshot-item" id="screenshot-5">
-                    <img src="screenshot5.png" alt="Чистовик ЭЗЗ для перевозчика">
+                    <img src="screenshot5.png" alt="ЭЗЗ для перевозчика">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">5</span>
-                            Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика Титул 1
+                            Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика
                         </div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
 
                 <div class="screenshot-item" id="screenshot-6">
-                    <img src="screenshot6.png" alt="Чистовик ЭПЭ экспедитору 2">
+                    <img src="screenshot6.png" alt="ЭПЭ экспедитору 2">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">6</span>
-                            Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2 Титул 1
+                            Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2
                         </div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
 
                 <div class="screenshot-item" id="screenshot-7">
-                    <img src="screenshot7.png" alt="Черновик ЭЭР для экспедитора 2">
+                    <img src="screenshot7.png" alt="ЭЭР для экспедитора 2">
                     <div class="screenshot-caption">
                         <div class="screenshot-title">
                             <span class="screenshot-number">7</span>
@@ -531,38 +551,20 @@
         function scrollToScreenshot(screenshotId) {
             const element = document.getElementById(screenshotId);
             if (element) {
-                // Remove expanded class from all screenshots
                 document.querySelectorAll('.screenshot-item').forEach(item => {
-                    item.classList.remove('expanded', 'highlight-animation');
+                    item.classList.remove('expanded');
                 });
                 
-                // Smooth scroll to element
                 element.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'center' 
                 });
                 
-                // Add expanded class after scroll
                 setTimeout(() => {
-                    element.classList.add('expanded', 'highlight-animation');
-                }, 800);
-                
-                // Remove highlight after animation
-                setTimeout(() => {
-                    element.classList.remove('highlight-animation');
-                }, 2800);
+                    element.classList.add('expanded');
+                }, 400);
             }
         }
-
-        // Also add click handlers to table rows
-        document.querySelectorAll('tbody tr').forEach(row => {
-            row.addEventListener('click', function() {
-                const screenshotId = this.getAttribute('data-screenshot');
-                if (screenshotId) {
-                    scrollToScreenshot(screenshotId);
-                }
-            });
-        });
     </script>
 </body>
 </html>
