@@ -35,6 +35,7 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* НАВИГАЦИЯ С ПОЛЗУНКОМ */
         .nav-tabs {
             display: flex;
             align-items: center;
@@ -50,12 +51,48 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .tab {
-            padding: 12px 28px;
-            background: rgba(255, 255, 255, 0.6);
+        .tabs-container {
+            position: relative;
+            display: flex;
+            gap: 10px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
             border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .tab-slider {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            height: calc(100% - 16px);
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.25), rgba(30, 136, 229, 0.25));
             border-radius: 12px;
-            font-size: 1rem;
+            border: 2px solid var(--pastel-blue);
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .tab-slider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: sliderShine 2s ease-in-out infinite;
+        }
+
+        @keyframes sliderShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .tab {
+            padding: 14px 32px;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-secondary);
             text-decoration: none;
@@ -63,16 +100,18 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            position: relative;
+            z-index: 2;
+            border-radius: 12px;
+            cursor: pointer;
         }
 
         .tab:hover {
-            background: rgba(255, 255, 255, 0.9);
+            color: var(--pastel-blue);
             transform: translateY(-2px);
         }
 
         .tab.active {
-            background: linear-gradient(135deg, rgba(229, 57, 53, 0.2), rgba(30, 136, 229, 0.2));
-            border-color: var(--pastel-blue);
             color: var(--pastel-blue);
         }
 
@@ -350,11 +389,14 @@
 </head>
 <body>
     <nav class="nav-tabs">
-        <a href="index.html" class="tab active">ЭПД</a>
-        <a href="edox.html" class="tab">
-            <img src="edox-logo.png" alt="EDOX" class="tab-logo">
-            EDOX
-        </a>
+        <div class="tabs-container">
+            <div class="tab-slider" id="tabSlider"></div>
+            <a href="index.html" class="tab active" data-tab="epd">ЭПД</a>
+            <a href="edox.html" class="tab" data-tab="edox">
+                <img src="edox-logo.png" alt="EDOX" class="tab-logo">
+                EDOX
+            </a>
+        </div>
     </nav>
 
     <div class="container">
@@ -563,6 +605,24 @@
     </div>
 
     <script>
+        // Ползунок для вкладок
+        function updateSlider() {
+            const slider = document.getElementById('tabSlider');
+            const activeTab = document.querySelector('.tab.active');
+            const container = document.querySelector('.tabs-container');
+            
+            if (slider && activeTab && container) {
+                const containerRect = container.getBoundingClientRect();
+                const tabRect = activeTab.getBoundingClientRect();
+                
+                slider.style.width = tabRect.width + 'px';
+                slider.style.left = (tabRect.left - containerRect.left) + 'px';
+            }
+        }
+
+        window.addEventListener('load', updateSlider);
+        window.addEventListener('resize', updateSlider);
+
         function scrollToScreenshot(screenshotId) {
             const element = document.getElementById(screenshotId);
             if (element) {
