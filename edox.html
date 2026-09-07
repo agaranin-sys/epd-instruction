@@ -428,29 +428,36 @@
         </footer>
     </div>
 
-    <script>
-        function updateSlider() {
-            const slider = document.getElementById('tabSlider');
-            const activeTab = document.querySelector('.tab.active');
-            const container = document.querySelector('.tabs-container');
+<script>
+    function updateSlider() {
+        const slider = document.getElementById('tabSlider');
+        const activeTab = document.querySelector('.tab.active');
+        const firstTab = document.querySelector('.tab');
+        const container = document.querySelector('.tabs-container');
+        
+        if (slider && activeTab && firstTab && container) {
+            const containerRect = container.getBoundingClientRect();
+            const firstTabRect = firstTab.getBoundingClientRect();
+            const activeTabRect = activeTab.getBoundingClientRect();
             
-            if (slider && activeTab && container) {
-                const containerRect = container.getBoundingClientRect();
-                const activeTabRect = activeTab.getBoundingClientRect();
-                
-                slider.style.transition = 'none';
+            // Сначала ставим ползунок на первую вкладку (ЭПД)
+            slider.style.transition = 'none';
+            slider.style.width = firstTabRect.width + 'px';
+            slider.style.left = (firstTabRect.left - containerRect.left) + 'px';
+            slider.style.opacity = '1';
+            
+            // Форсируем перерисовку браузера
+            slider.offsetHeight;
+            
+            // Затем плавно перемещаем к активной вкладке (EDOX)
+            requestAnimationFrame(() => {
+                slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 slider.style.width = activeTabRect.width + 'px';
                 slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-                slider.style.opacity = '1';
-                
-                setTimeout(() => {
-                    slider.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                }, 100);
-            }
+            });
         }
+    }
 
-        window.addEventListener('load', updateSlider);
-        window.addEventListener('resize', updateSlider);
-    </script>
-</body>
-</html>
+    window.addEventListener('load', updateSlider);
+    window.addEventListener('resize', updateSlider);
+</script>
