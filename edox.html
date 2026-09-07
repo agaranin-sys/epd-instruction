@@ -23,10 +23,6 @@
             --text-secondary: #4a4a6a;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 25%, #ffebee 50%, #e3f2fd 75%, #ffffff 100%);
@@ -170,9 +166,10 @@
             color: var(--edox-green);
         }
 
+        /* СТАТУСЫ - ОДИН РЯД, БОЛЬШИЕ */
         .status-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
@@ -251,13 +248,14 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* ОШИБКИ - ДРУГ ПОД ДРУГОМ, БОЛЬШИЕ */
         .error-section {
             margin-top: 50px;
         }
 
         .error-screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 30px;
             margin-top: 30px;
         }
@@ -272,7 +270,7 @@
         }
 
         .error-screenshot-item:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
@@ -299,7 +297,6 @@
 
         @media (max-width: 768px) {
             .edox-title { font-size: 2.5rem; }
-            .error-screenshots { grid-template-columns: 1fr; }
             .status-grid { grid-template-columns: 1fr; }
         }
     </style>
