@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --pastel-red: #e53935;
@@ -69,17 +65,14 @@
             border-radius: 12px;
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
         }
 
         .tab-slider::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
             animation: sliderShine 2.5s ease-in-out infinite;
             border-radius: 10px;
@@ -106,27 +99,16 @@
             cursor: pointer;
         }
 
-        .tab:hover {
-            color: var(--pastel-blue);
-            transform: translateY(-2px);
-        }
-
-        .tab.active {
-            color: var(--pastel-blue);
-        }
+        .tab:hover { color: var(--pastel-blue); transform: translateY(-2px); }
+        .tab.active { color: var(--pastel-blue); }
 
         .tab-logo {
-            width: 24px;
-            height: 24px;
+            width: 24px; height: 24px;
             border-radius: 4px;
             object-fit: contain;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
         header {
             text-align: center;
@@ -149,10 +131,7 @@
             background-clip: text;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-        }
+        .subtitle { font-size: 1.2rem; color: var(--text-secondary); }
 
         .section {
             margin-bottom: 60px;
@@ -164,18 +143,9 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-        }
+        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 30px; color: var(--text-primary); }
 
-        .docs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-        }
+        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
 
         .doc-item {
             padding: 20px;
@@ -185,30 +155,13 @@
             transition: all 0.3s ease;
         }
 
-        .doc-item:nth-child(odd) {
-            border-left-color: var(--pastel-red);
-        }
+        .doc-item:nth-child(odd) { border-left-color: var(--pastel-red); }
+        .doc-item:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
 
-        .doc-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+        .doc-abbr { font-weight: 600; font-size: 1.1rem; margin-bottom: 4px; }
+        .doc-name { color: var(--text-secondary); font-size: 0.95rem; }
 
-        .doc-abbr {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
-        .doc-name {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-        }
+        .table-wrapper { width: 100%; overflow-x: auto; }
 
         table {
             width: 100%;
@@ -219,9 +172,7 @@
             table-layout: fixed;
         }
 
-        thead {
-            background: linear-gradient(135deg, rgba(229, 57, 53, 0.12), rgba(30, 136, 229, 0.12));
-        }
+        thead { background: linear-gradient(135deg, rgba(229, 57, 53, 0.12), rgba(30, 136, 229, 0.12)); }
 
         thead th {
             padding: 20px 24px;
@@ -232,13 +183,8 @@
             border-bottom: 2px solid rgba(0, 0, 0, 0.08);
         }
 
-        thead th:first-child {
-            width: 45%;
-        }
-
-        thead th:last-child {
-            width: 55%;
-        }
+        thead th:first-child { width: 45%; }
+        thead th:last-child { width: 55%; }
 
         tbody tr {
             cursor: pointer;
@@ -250,27 +196,21 @@
         tbody tr::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7), transparent);
             pointer-events: none;
             opacity: 0;
         }
 
-        tbody tr:hover::after {
-            animation: shine 1.2s ease-out;
-        }
+        tbody tr:hover::after { animation: shine 1.2s ease-out; }
 
         @keyframes shine {
             0% { left: -100%; opacity: 1; }
             100% { left: 100%; opacity: 0; }
         }
 
-        tbody tr:hover {
-            background: linear-gradient(90deg, rgba(232, 245, 253, 0.9), rgba(255, 235, 238, 0.7));
-        }
+        tbody tr:hover { background: linear-gradient(90deg, rgba(232, 245, 253, 0.9), rgba(255, 235, 238, 0.7)); }
 
         tbody td {
             padding: 20px 24px;
@@ -279,15 +219,9 @@
             font-size: 0.95rem;
         }
 
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
+        tbody tr:last-child td { border-bottom: none; }
 
-        .doc-name-cell {
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
+        .doc-name-cell { font-weight: 600; color: var(--text-primary); line-height: 1.5; }
 
         .tag {
             display: inline-block;
@@ -299,26 +233,11 @@
             vertical-align: middle;
         }
 
-        .tag-final {
-            background: rgba(76, 175, 80, 0.15);
-            color: #2e7d32;
-        }
+        .tag-final { background: rgba(76, 175, 80, 0.15); color: #2e7d32; }
+        .tag-draft { background: rgba(255, 152, 0, 0.15); color: #e65100; }
+        .tag-title { background: rgba(30, 136, 229, 0.15); color: #1565c0; }
 
-        .tag-draft {
-            background: rgba(255, 152, 0, 0.15);
-            color: #e65100;
-        }
-
-        .tag-title {
-            background: rgba(30, 136, 229, 0.15);
-            color: #1565c0;
-        }
-
-        .screenshots-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
+        .screenshots-grid { display: flex; flex-direction: column; gap: 40px; }
 
         .screenshot-item {
             background: rgba(255, 255, 255, 0.9);
@@ -335,11 +254,7 @@
             border-color: var(--pastel-blue);
         }
 
-        .screenshot-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .screenshot-item img { width: 100%; height: auto; display: block; }
 
         .screenshot-caption {
             padding: 20px 24px;
@@ -349,8 +264,7 @@
 
         .screenshot-number {
             display: inline-block;
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             background: linear-gradient(135deg, #e53935, #1e88e5);
             color: white;
             border-radius: 50%;
@@ -361,30 +275,12 @@
             margin-right: 12px;
         }
 
-        .screenshot-title {
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            font-size: 1.1rem;
-        }
+        .screenshot-title { font-weight: 600; display: inline-flex; align-items: center; font-size: 1.1rem; }
+        .screenshot-desc { margin-top: 10px; color: var(--text-secondary); padding-left: 44px; font-size: 1rem; }
 
-        .screenshot-desc {
-            margin-top: 10px;
-            color: var(--text-secondary);
-            padding-left: 44px;
-            font-size: 1rem;
-        }
+        footer { text-align: center; padding: 30px; color: var(--text-secondary); }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-secondary);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .section { padding: 25px; }
-        }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .section { padding: 25px; } }
     </style>
 </head>
 <body>
@@ -408,34 +304,13 @@
         <section class="section">
             <h2>Расшифровка обозначений</h2>
             <div class="docs-grid">
-                <div class="doc-item">
-                    <div class="doc-abbr">ЭПД</div>
-                    <div class="doc-name">Электронные перевозочные документы</div>
-                </div>
-                <div class="doc-item">
-                    <div class="doc-abbr">ЭПЭ</div>
-                    <div class="doc-name">Электронное поручение экспедитору</div>
-                </div>
-                <div class="doc-item">
-                    <div class="doc-abbr">ЭЭР</div>
-                    <div class="doc-name">Электронная экспедиторская расписка</div>
-                </div>
-                <div class="doc-item">
-                    <div class="doc-abbr">ЭТрН</div>
-                    <div class="doc-name">Электронная транспортная накладная</div>
-                </div>
-                <div class="doc-item">
-                    <div class="doc-abbr">ЭЗЗ</div>
-                    <div class="doc-name">Электронный заказ-заявка</div>
-                </div>
-                <div class="doc-item">
-                    <div class="doc-abbr">Т1</div>
-                    <div class="doc-name">Титул 1</div>
-                </div>
-                <div class="doc-item">
-                    <div class="doc-abbr">Т2</div>
-                    <div class="doc-name">Титул 2</div>
-                </div>
+                <div class="doc-item"><div class="doc-abbr">ЭПД</div><div class="doc-name">Электронные перевозочные документы</div></div>
+                <div class="doc-item"><div class="doc-abbr">ЭПЭ</div><div class="doc-name">Электронное поручение экспедитору</div></div>
+                <div class="doc-item"><div class="doc-abbr">ЭЭР</div><div class="doc-name">Электронная экспедиторская расписка</div></div>
+                <div class="doc-item"><div class="doc-abbr">ЭТрН</div><div class="doc-name">Электронная транспортная накладная</div></div>
+                <div class="doc-item"><div class="doc-abbr">ЭЗЗ</div><div class="doc-name">Электронный заказ-заявка</div></div>
+                <div class="doc-item"><div class="doc-abbr">Т1</div><div class="doc-name">Титул 1</div></div>
+                <div class="doc-item"><div class="doc-abbr">Т2</div><div class="doc-name">Титул 2</div></div>
             </div>
         </section>
 
@@ -451,65 +326,35 @@
                     </thead>
                     <tbody>
                         <tr onclick="scrollToScreenshot('screenshot-1')">
-                            <td class="doc-name-cell">
-                                Черновик Поручения Экспедитора (ЭПЭ) для клиента
-                                <span class="tag tag-draft">Черновик</span>
-                                <span class="tag tag-title">Т1</span>
-                            </td>
+                            <td class="doc-name-cell">Черновик Поручения Экспедитора (ЭПЭ) для клиента <span class="tag tag-draft">Черновик</span> <span class="tag tag-title">Т1</span></td>
                             <td>Формируется автоматически, когда заявка перешла на статус «подтверждена»</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-1')">
-                            <td class="doc-name-cell">
-                                Чистовик Поручения Экспедитора (ЭПЭ) для клиента
-                                <span class="tag tag-final">Чистовик</span>
-                                <span class="tag tag-title">Т2</span>
-                            </td>
+                            <td class="doc-name-cell">Чистовик Поручения Экспедитора (ЭПЭ) для клиента <span class="tag tag-final">Чистовик</span> <span class="tag tag-title">Т2</span></td>
                             <td>Подпись Т2 ЭПЭ происходит автоматически после того, как клиент подпишет свой титул Т1 ЭПЭ</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-2')">
-                            <td class="doc-name-cell">
-                                Чистовик Экспедиторской расписки для клиента (ЭЭР)
-                                <span class="tag tag-final">Чистовик</span>
-                            </td>
+                            <td class="doc-name-cell">Чистовик Экспедиторской расписки для клиента (ЭЭР) <span class="tag tag-final">Чистовик</span></td>
                             <td>ЭПЭ Т1 подписан клиентом; При плече «забор» в поездке есть факт прибытия водителя на загрузку; При самопривозе силами клиента есть спланированное следующее плечо</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-3')">
-                            <td class="doc-name-cell">
-                                Чистовик Транспортной накладной (ЭТрН)
-                                <span class="tag tag-final">Чистовик</span>
-                                <span class="tag tag-title">Т1</span>
-                            </td>
+                            <td class="doc-name-cell">Чистовик Транспортной накладной (ЭТрН) <span class="tag tag-final">Чистовик</span> <span class="tag tag-title">Т1</span></td>
                             <td>Формируется в момент появления данных в поездке об убытии водителя с загрузки</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-4')">
-                            <td class="doc-name-cell">
-                                Черновик Транспортной накладной (ЭТрН)
-                                <span class="tag tag-draft">Черновик</span>
-                                <span class="tag tag-title">Т1</span>
-                            </td>
+                            <td class="doc-name-cell">Черновик Транспортной накладной (ЭТрН) <span class="tag tag-draft">Черновик</span> <span class="tag tag-title">Т1</span></td>
                             <td>Формируется при двойной экспедиции, т.е. перевозчик на портале внёс информацию, что водитель не в штате, и указал реального перевозчика, и в момент появления данных в поездке об убытии водителя с загрузки</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-5')">
-                            <td class="doc-name-cell">
-                                Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика
-                                <span class="tag tag-final">Чистовик</span>
-                                <span class="tag tag-title">Т1</span>
-                            </td>
+                            <td class="doc-name-cell">Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика <span class="tag tag-final">Чистовик</span> <span class="tag tag-title">Т1</span></td>
                             <td>Формируется в момент появления данных в поездке по водителю</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-6')">
-                            <td class="doc-name-cell">
-                                Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2
-                                <span class="tag tag-final">Чистовик</span>
-                                <span class="tag tag-title">Т1</span>
-                            </td>
+                            <td class="doc-name-cell">Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2 <span class="tag tag-final">Чистовик</span> <span class="tag tag-title">Т1</span></td>
                             <td>Формируется при двойной экспедиции, т.е. перевозчик на портале внёс информацию, что водитель не в штате, и указал реального перевозчика</td>
                         </tr>
                         <tr onclick="scrollToScreenshot('screenshot-7')">
-                            <td class="doc-name-cell">
-                                Черновик Экспедиторской расписки (ЭЭР) для Экспедитора 2
-                                <span class="tag tag-draft">Черновик</span>
-                            </td>
+                            <td class="doc-name-cell">Черновик Экспедиторской расписки (ЭЭР) для Экспедитора 2 <span class="tag tag-draft">Черновик</span></td>
                             <td>Формируется при двойной экспедиции, т.е. перевозчик на портале внёс информацию, что водитель не в штате, и указал реального перевозчика, и по данной поездке есть подписанное Поручение экспедитору</td>
                         </tr>
                     </tbody>
@@ -523,135 +368,112 @@
                 <div class="screenshot-item" id="screenshot-1">
                     <img src="screenshot1.png" alt="Поручение экспедитору">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">1</span>
-                            Поручение экспедитору — Титул 1 и Титул 2
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">1</span>Поручение экспедитору — Титул 1 и Титул 2</div>
                         <div class="screenshot-desc">ТМС: Зайти по заявке в раздел «Документы»</div>
                     </div>
                 </div>
-
                 <div class="screenshot-item" id="screenshot-2">
                     <img src="screenshot2.png" alt="ЭЭР для клиента">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">2</span>
-                            Чистовик Экспедиторской расписки (ЭЭР) для клиента
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">2</span>Чистовик Экспедиторской расписки (ЭЭР) для клиента</div>
                         <div class="screenshot-desc">ТМСХ: Зайти по заявке в раздел «Документы»</div>
                     </div>
                 </div>
-
                 <div class="screenshot-item" id="screenshot-3">
                     <img src="screenshot3.png" alt="ЭТрН чистовик">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">3</span>
-                            Чистовик Транспортной накладной (ЭТрН) Титул 1
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">3</span>Чистовик Транспортной накладной (ЭТрН) Титул 1</div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
-
                 <div class="screenshot-item" id="screenshot-4">
                     <img src="screenshot4.png" alt="ЭТрН черновик">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">4</span>
-                            Черновик Транспортной накладной (ЭТрН) Титул 1
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">4</span>Черновик Транспортной накладной (ЭТрН) Титул 1</div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
-
                 <div class="screenshot-item" id="screenshot-5">
                     <img src="screenshot5.png" alt="ЭЗЗ для перевозчика">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">5</span>
-                            Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">5</span>Чистовик Заказа-Заявки (ЭЗЗ) для перевозчика</div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
-
                 <div class="screenshot-item" id="screenshot-6">
                     <img src="screenshot6.png" alt="ЭПЭ экспедитору 2">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">6</span>
-                            Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">6</span>Чистовик Поручения Экспедитору (ЭПЭ) экспедитору 2</div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
-
                 <div class="screenshot-item" id="screenshot-7">
                     <img src="screenshot7.png" alt="ЭЭР для экспедитора 2">
                     <div class="screenshot-caption">
-                        <div class="screenshot-title">
-                            <span class="screenshot-number">7</span>
-                            Черновик Экспедиторской расписки (ЭЭР) для Экспедитора 2
-                        </div>
+                        <div class="screenshot-title"><span class="screenshot-number">7</span>Черновик Экспедиторской расписки (ЭЭР) для Экспедитора 2</div>
                         <div class="screenshot-desc">ТМСХ: Зайти по поездке в раздел «Документы»</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <p>Инструкция по работе с электронными перевозочными документами</p>
-        </footer>
+        <footer><p>Инструкция по работе с электронными перевозочными документами</p></footer>
     </div>
 
-<script>
-    function updateSlider() {
-        const slider = document.getElementById('tabSlider');
-        const activeTab = document.querySelector('.tab.active');
-        const firstTab = document.querySelector('.tab');
-        const container = document.querySelector('.tabs-container');
-        
-        if (slider && activeTab && firstTab && container) {
-            const containerRect = container.getBoundingClientRect();
-            const firstTabRect = firstTab.getBoundingClientRect();
-            const activeTabRect = activeTab.getBoundingClientRect();
+    <script>
+        function updateSlider() {
+            const slider = document.getElementById('tabSlider');
+            const activeTab = document.querySelector('.tab.active');
+            const tabs = document.querySelectorAll('.tab');
+            const container = document.querySelector('.tabs-container');
             
-            // Сначала ставим ползунок на первую вкладку
-            slider.style.transition = 'none';
-            slider.style.width = firstTabRect.width + 'px';
-            slider.style.left = (firstTabRect.left - containerRect.left) + 'px';
-            slider.style.opacity = '1';
-            
-            // Форсируем перерисовку браузера
-            slider.offsetHeight;
-            
-            // Затем плавно перемещаем к активной вкладке
-            requestAnimationFrame(() => {
-                slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                slider.style.width = activeTabRect.width + 'px';
-                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-            });
+            if (slider && activeTab && container && tabs.length > 0) {
+                const containerRect = container.getBoundingClientRect();
+                const activeTabRect = activeTab.getBoundingClientRect();
+                
+                // Находим ПРОТИВОПОЛОЖНУЮ вкладку (не активную)
+                let startTab = null;
+                tabs.forEach(tab => {
+                    if (!tab.classList.contains('active')) {
+                        startTab = tab;
+                    }
+                });
+                
+                if (startTab) {
+                    const startTabRect = startTab.getBoundingClientRect();
+                    
+                    // Ставим ползунок на противоположную вкладку
+                    slider.style.transition = 'none';
+                    slider.style.width = startTabRect.width + 'px';
+                    slider.style.left = (startTabRect.left - containerRect.left) + 'px';
+                    slider.style.opacity = '1';
+                    
+                    // Форсируем перерисовку
+                    slider.offsetHeight;
+                    
+                    // Плавно перемещаем к активной
+                    requestAnimationFrame(() => {
+                        slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        slider.style.width = activeTabRect.width + 'px';
+                        slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
+                    });
+                }
+            }
         }
-    }
 
-    window.addEventListener('load', updateSlider);
-    window.addEventListener('resize', updateSlider);
+        window.addEventListener('load', updateSlider);
+        window.addEventListener('resize', updateSlider);
 
-    function scrollToScreenshot(screenshotId) {
-        const element = document.getElementById(screenshotId);
-        if (element) {
-            document.querySelectorAll('.screenshot-item').forEach(item => {
-                item.classList.remove('expanded');
-            });
-            
-            element.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
-            
-            setTimeout(() => {
-                element.classList.add('expanded');
-            }, 500);
+        function scrollToScreenshot(screenshotId) {
+            const element = document.getElementById(screenshotId);
+            if (element) {
+                document.querySelectorAll('.screenshot-item').forEach(item => {
+                    item.classList.remove('expanded');
+                });
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => { element.classList.add('expanded'); }, 500);
+            }
         }
-    }
-</script>
+    </script>
+</body>
+</html>
