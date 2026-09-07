@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --pastel-red: #e53935;
@@ -72,17 +68,14 @@
             border-radius: 12px;
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
         }
 
         .tab-slider::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
             animation: sliderShine 2.5s ease-in-out infinite;
             border-radius: 10px;
@@ -109,27 +102,12 @@
             cursor: pointer;
         }
 
-        .tab:hover {
-            color: var(--pastel-blue);
-            transform: translateY(-2px);
-        }
+        .tab:hover { color: var(--pastel-blue); transform: translateY(-2px); }
+        .tab.active { color: var(--pastel-blue); }
 
-        .tab.active {
-            color: var(--pastel-blue);
-        }
+        .tab-logo { width: 24px; height: 24px; border-radius: 4px; object-fit: contain; }
 
-        .tab-logo {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            object-fit: contain;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
 
         .edox-header {
             display: flex;
@@ -145,12 +123,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
-        .edox-logo-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            object-fit: contain;
-        }
+        .edox-logo-large { width: 80px; height: 80px; border-radius: 16px; object-fit: contain; }
 
         .edox-title {
             font-size: 4rem;
@@ -171,12 +144,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-        }
+        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 30px; color: var(--text-primary); }
 
         .edox-link-card {
             background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(76, 175, 80, 0.1));
@@ -188,29 +156,12 @@
             transition: all 0.3s ease;
         }
 
-        .edox-link-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(30, 136, 229, 0.2);
-        }
+        .edox-link-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(30, 136, 229, 0.2); }
 
-        .edox-link {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--edox-blue);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+        .edox-link { font-size: 1.4rem; font-weight: 700; color: var(--edox-blue); text-decoration: none; transition: all 0.3s ease; }
+        .edox-link:hover { color: var(--edox-green); }
 
-        .edox-link:hover {
-            color: var(--edox-green);
-        }
-
-        .status-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 40px;
-        }
+        .status-container { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
 
         .status-card {
             background: white;
@@ -220,36 +171,16 @@
             transition: all 0.4s ease;
         }
 
-        .status-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-        }
+        .status-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
 
-        .status-card.green {
-            border-color: var(--edox-green);
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(76, 175, 80, 0.02));
-        }
+        .status-card.green { border-color: var(--edox-green); background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(76, 175, 80, 0.02)); }
+        .status-card.blue { border-color: var(--edox-blue); background: linear-gradient(135deg, rgba(33, 150, 243, 0.08), rgba(33, 150, 243, 0.02)); }
+        .status-card.red { border-color: var(--edox-red); background: linear-gradient(135deg, rgba(244, 67, 54, 0.08), rgba(244, 67, 54, 0.02)); }
 
-        .status-card.blue {
-            border-color: var(--edox-blue);
-            background: linear-gradient(135deg, rgba(33, 150, 243, 0.08), rgba(33, 150, 243, 0.02));
-        }
-
-        .status-card.red {
-            border-color: var(--edox-red);
-            background: linear-gradient(135deg, rgba(244, 67, 54, 0.08), rgba(244, 67, 54, 0.02));
-        }
-
-        .status-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
+        .status-header { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
 
         .status-icon {
-            width: 70px;
-            height: 70px;
+            width: 70px; height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -258,33 +189,16 @@
             flex-shrink: 0;
         }
 
-        .status-card.green .status-icon {
-            background: rgba(76, 175, 80, 0.2);
-        }
+        .status-card.green .status-icon { background: rgba(76, 175, 80, 0.2); }
+        .status-card.blue .status-icon { background: rgba(33, 150, 243, 0.2); }
+        .status-card.red .status-icon { background: rgba(244, 67, 54, 0.2); }
 
-        .status-card.blue .status-icon {
-            background: rgba(33, 150, 243, 0.2);
-        }
-
-        .status-card.red .status-icon {
-            background: rgba(244, 67, 54, 0.2);
-        }
-
-        .status-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
+        .status-card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
         .status-card.green h3 { color: var(--edox-green); }
         .status-card.blue h3 { color: var(--edox-blue); }
         .status-card.red h3 { color: var(--edox-red); }
 
-        .status-card p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
+        .status-card p { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; }
 
         .status-screenshot {
             width: 100%;
@@ -294,16 +208,9 @@
             border: 2px solid rgba(0, 0, 0, 0.05);
         }
 
-        .error-section {
-            margin-top: 60px;
-        }
+        .error-section { margin-top: 60px; }
 
-        .error-screenshots {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 30px;
-        }
+        .error-screenshots { display: flex; flex-direction: column; gap: 40px; margin-top: 30px; }
 
         .error-screenshot-item {
             background: white;
@@ -314,16 +221,8 @@
             transition: all 0.4s ease;
         }
 
-        .error-screenshot-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-        }
-
-        .error-screenshot-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .error-screenshot-item:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
+        .error-screenshot-item img { width: 100%; height: auto; display: block; }
 
         .error-screenshot-item .caption {
             padding: 24px 32px;
@@ -334,16 +233,9 @@
             border-top: 2px solid rgba(255, 255, 255, 0.6);
         }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-secondary);
-        }
+        footer { text-align: center; padding: 30px; color: var(--text-secondary); }
 
-        @media (max-width: 768px) {
-            .edox-title { font-size: 2.5rem; }
-            .status-card { padding: 30px 20px; }
-        }
+        @media (max-width: 768px) { .edox-title { font-size: 2.5rem; } .status-card { padding: 30px 20px; } }
     </style>
 </head>
 <body>
@@ -366,9 +258,7 @@
 
         <section class="section">
             <div class="edox-link-card">
-                <a href="https://transport.edox.fmlogistic.ru/" target="_blank" class="edox-link">
-                    Перейти на портал EDOX
-                </a>
+                <a href="https://transport.edox.fmlogistic.ru/" target="_blank" class="edox-link">Перейти на портал EDOX</a>
             </div>
 
             <h2>Статусы документов в EDOX</h2>
@@ -398,7 +288,7 @@
 
                 <div class="status-card red">
                     <div class="status-header">
-                        <div class="status-icon"></div>
+                        <div class="status-icon">✕</div>
                         <div>
                             <h3>Красный цвет строки</h3>
                             <p>Документ упал в ошибки</p>
@@ -423,41 +313,52 @@
             </div>
         </section>
 
-        <footer>
-            <p>Система электронного документооборота EDOX</p>
-        </footer>
+        <footer><p>Система электронного документооборота EDOX</p></footer>
     </div>
 
-<script>
-    function updateSlider() {
-        const slider = document.getElementById('tabSlider');
-        const activeTab = document.querySelector('.tab.active');
-        const firstTab = document.querySelector('.tab');
-        const container = document.querySelector('.tabs-container');
-        
-        if (slider && activeTab && firstTab && container) {
-            const containerRect = container.getBoundingClientRect();
-            const firstTabRect = firstTab.getBoundingClientRect();
-            const activeTabRect = activeTab.getBoundingClientRect();
+    <script>
+        function updateSlider() {
+            const slider = document.getElementById('tabSlider');
+            const activeTab = document.querySelector('.tab.active');
+            const tabs = document.querySelectorAll('.tab');
+            const container = document.querySelector('.tabs-container');
             
-            // Сначала ставим ползунок на первую вкладку (ЭПД)
-            slider.style.transition = 'none';
-            slider.style.width = firstTabRect.width + 'px';
-            slider.style.left = (firstTabRect.left - containerRect.left) + 'px';
-            slider.style.opacity = '1';
-            
-            // Форсируем перерисовку браузера
-            slider.offsetHeight;
-            
-            // Затем плавно перемещаем к активной вкладке (EDOX)
-            requestAnimationFrame(() => {
-                slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                slider.style.width = activeTabRect.width + 'px';
-                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-            });
+            if (slider && activeTab && container && tabs.length > 0) {
+                const containerRect = container.getBoundingClientRect();
+                const activeTabRect = activeTab.getBoundingClientRect();
+                
+                // Находим ПРОТИВОПОЛОЖНУЮ вкладку (не активную)
+                let startTab = null;
+                tabs.forEach(tab => {
+                    if (!tab.classList.contains('active')) {
+                        startTab = tab;
+                    }
+                });
+                
+                if (startTab) {
+                    const startTabRect = startTab.getBoundingClientRect();
+                    
+                    // Ставим ползунок на противоположную вкладку
+                    slider.style.transition = 'none';
+                    slider.style.width = startTabRect.width + 'px';
+                    slider.style.left = (startTabRect.left - containerRect.left) + 'px';
+                    slider.style.opacity = '1';
+                    
+                    // Форсируем перерисовку
+                    slider.offsetHeight;
+                    
+                    // Плавно перемещаем к активной
+                    requestAnimationFrame(() => {
+                        slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        slider.style.width = activeTabRect.width + 'px';
+                        slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
+                    });
+                }
+            }
         }
-    }
 
-    window.addEventListener('load', updateSlider);
-    window.addEventListener('resize', updateSlider);
-</script>
+        window.addEventListener('load', updateSlider);
+        window.addEventListener('resize', updateSlider);
+    </script>
+</body>
+</html>
