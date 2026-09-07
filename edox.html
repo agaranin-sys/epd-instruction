@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDOX - Инструкция</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -34,7 +34,6 @@
             animation: gradientBG 15s ease infinite;
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         @keyframes gradientBG {
@@ -43,78 +42,51 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Navigation */
         .nav-tabs {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            padding: 25px 40px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .tab {
-            padding: 14px 32px;
+            padding: 12px 28px;
             background: rgba(255, 255, 255, 0.6);
             border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 14px;
-            font-size: 1.05rem;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .tab:hover::before {
-            left: 100%;
-        }
-
         .tab:hover {
-            background: rgba(255, 255, 255, 0.95);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.25);
-            color: var(--pastel-blue);
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
         }
 
         .tab.active {
             background: linear-gradient(135deg, rgba(30, 136, 229, 0.15), rgba(76, 175, 80, 0.1));
             border-color: var(--pastel-blue);
             color: var(--pastel-blue);
-            box-shadow: 0 6px 20px rgba(30, 136, 229, 0.25);
         }
 
         .tab-logo {
-            width: 26px;
-            height: 26px;
-            border-radius: 6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
             object-fit: contain;
         }
 
@@ -124,240 +96,124 @@
             padding: 40px 20px;
         }
 
-        /* Hero Section */
         .edox-header {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 80px;
-            padding: 80px 40px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(30px) saturate(180%);
-            border-radius: 32px;
+            margin-bottom: 60px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .edox-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(30, 136, 229, 0.05) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
         .edox-logo-large {
-            width: 100px;
-            height: 100px;
-            border-radius: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
             object-fit: contain;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            animation: logoFloat 3s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .edox-title {
-            font-size: 5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--edox-blue) 0%, var(--edox-green) 50%, var(--edox-blue) 100%);
-            background-size: 200% auto;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--edox-blue), var(--edox-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmer 3s linear infinite;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
         }
 
         .section {
-            margin-bottom: 80px;
-            padding: 50px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(30px) saturate(180%);
-            border-radius: 28px;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section:hover {
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12);
-            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 35px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
             color: var(--text-primary);
-            position: relative;
-            display: inline-block;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--edox-blue), var(--edox-green));
-            border-radius: 2px;
-        }
-
-        /* EDOX Link Card */
         .edox-link-card {
             background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(76, 175, 80, 0.1));
             border: 2px solid rgba(30, 136, 229, 0.2);
-            border-radius: 20px;
-            padding: 40px;
+            border-radius: 16px;
+            padding: 35px;
             text-align: center;
-            margin-bottom: 60px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .edox-link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            animation: linkShine 3s ease-in-out infinite;
-        }
-
-        @keyframes linkShine {
-            0% { left: -100%; }
-            50%, 100% { left: 100%; }
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
         }
 
         .edox-link-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(30, 136, 229, 0.25);
-            border-color: var(--edox-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 136, 229, 0.2);
         }
 
         .edox-link {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--edox-blue);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
             transition: all 0.3s ease;
         }
 
         .edox-link:hover {
             color: var(--edox-green);
-            transform: scale(1.05);
         }
 
-        /* Status Cards */
         .status-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
         .status-card {
             background: white;
-            border-radius: 24px;
-            padding: 36px;
+            border-radius: 20px;
+            padding: 32px;
             border: 3px solid;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .status-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
         }
 
         .status-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
         .status-card.green {
             border-color: var(--edox-green);
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(76, 175, 80, 0.02));
+            background: rgba(76, 175, 80, 0.05);
         }
 
         .status-card.blue {
             border-color: var(--edox-blue);
-            background: linear-gradient(135deg, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
+            background: rgba(33, 150, 243, 0.05);
         }
 
         .status-card.red {
             border-color: var(--edox-red);
-            background: linear-gradient(135deg, rgba(244, 67, 54, 0.05), rgba(244, 67, 54, 0.02));
+            background: rgba(244, 67, 54, 0.05);
         }
 
         .status-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 2.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .status-card:hover .status-icon {
-            transform: scale(1.1) rotate(10deg);
+            margin-bottom: 16px;
+            font-size: 2rem;
         }
 
         .status-card.green .status-icon {
@@ -366,29 +222,16 @@
 
         .status-card.blue .status-icon {
             background: rgba(33, 150, 243, 0.2);
-            animation: spin 3s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         .status-card.red .status-icon {
             background: rgba(244, 67, 54, 0.2);
-            animation: shake 2s ease-in-out infinite;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
         }
 
         .status-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .status-card.green h3 { color: var(--edox-green); }
@@ -397,72 +240,52 @@
 
         .status-card p {
             color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
             margin-bottom: 20px;
         }
 
         .status-screenshot {
             width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .status-card:hover .status-screenshot {
-            transform: scale(1.02);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Error Section */
         .error-section {
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
         .error-screenshots {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 32px;
-            margin-top: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .error-screenshot-item {
             background: white;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .error-screenshot-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
         }
 
         .error-screenshot-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
         .error-screenshot-item img {
             width: 100%;
             height: auto;
             display: block;
-            transition: all 0.4s ease;
-        }
-
-        .error-screenshot-item:hover img {
-            filter: brightness(1.03);
         }
 
         .error-screenshot-item .caption {
-            padding: 24px 28px;
+            padding: 20px 24px;
             background: white;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
             color: var(--text-primary);
             border-top: 2px solid rgba(255, 255, 255, 0.6);
@@ -470,51 +293,14 @@
 
         footer {
             text-align: center;
-            padding: 50px;
+            padding: 30px;
             color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            margin-top: 60px;
-        }
-
-        /* Scroll to top button */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--edox-blue), var(--edox-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.6rem;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
-            animation: bounce 2s ease-in-out infinite;
-            z-index: 100;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .scroll-top:hover {
-            transform: scale(1.15);
-            box-shadow: 0 12px 35px rgba(30, 136, 229, 0.5);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         @media (max-width: 768px) {
-            .edox-title { font-size: 3rem; }
+            .edox-title { font-size: 2.5rem; }
             .error-screenshots { grid-template-columns: 1fr; }
             .status-grid { grid-template-columns: 1fr; }
-            .section { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -584,41 +370,5 @@
             <p>Система электронного документооборота EDOX</p>
         </footer>
     </div>
-
-    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
-
-    <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 150);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section, .status-card, .error-screenshot-item').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            document.querySelectorAll('.section').forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const speed = 0.05;
-                    section.style.transform = `translateY(${scrolled * speed}px)`;
-                }
-            });
-        });
-    </script>
 </body>
 </html>
