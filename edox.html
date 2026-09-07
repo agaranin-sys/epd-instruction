@@ -41,7 +41,7 @@
         .nav-tabs {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             padding: 20px 40px;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
@@ -50,13 +50,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .logo {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            object-fit: contain;
         }
 
         .tab {
@@ -69,6 +62,9 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .tab:hover {
@@ -77,9 +73,22 @@
         }
 
         .tab.active {
-            background: linear-gradient(135deg, rgba(229, 57, 53, 0.2), rgba(30, 136, 229, 0.2));
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.15), rgba(76, 175, 80, 0.1));
             border-color: var(--pastel-blue);
             color: var(--pastel-blue);
+        }
+
+        .tab-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .edox-header {
@@ -96,7 +105,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
-        .edox-logo {
+        .edox-logo-large {
             width: 80px;
             height: 80px;
             border-radius: 16px;
@@ -110,12 +119,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
         }
 
         .section {
@@ -291,14 +294,16 @@
 </head>
 <body>
     <nav class="nav-tabs">
-        <img src="logo.png" alt="Logo" class="logo">
         <a href="index.html" class="tab">ЭПД</a>
-        <a href="edox.html" class="tab active">EDOX</a>
+        <a href="edox.html" class="tab active">
+            <img src="edox-logo.png" alt="EDOX" class="tab-logo">
+            EDOX
+        </a>
     </nav>
 
     <div class="container">
         <div class="edox-header">
-            <img src="edox-logo.png" alt="EDOX Logo" class="edox-logo">
+            <img src="edox-logo.png" alt="EDOX Logo" class="edox-logo-large">
             <h1 class="edox-title">Edox</h1>
         </div>
 
@@ -320,7 +325,7 @@
                 </div>
 
                 <div class="status-card blue">
-                    <div class="status-icon">⟳</div>
+                    <div class="status-icon"></div>
                     <h3>Голубой цвет строки</h3>
                     <p>Документ в процессе отправки</p>
                     <img src="edox-blue.png" alt="Голубой статус" class="status-screenshot">
