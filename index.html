@@ -20,10 +20,6 @@
             --text-secondary: #4a4a6a;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 25%, #ffebee 50%, #e3f2fd 75%, #ffffff 100%);
@@ -160,70 +156,79 @@
             font-size: 0.95rem;
         }
 
+        /* ТАБЛИЦА - ИСПРАВЛЕНА */
         .table-wrapper {
+            width: 100%;
             overflow-x: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
             background: white;
             border-radius: 12px;
             overflow: hidden;
+            table-layout: fixed;
         }
 
         thead {
-            background: linear-gradient(135deg, rgba(229, 57, 53, 0.15), rgba(30, 136, 229, 0.15));
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.12), rgba(30, 136, 229, 0.12));
         }
 
         thead th {
-            padding: 18px 20px;
+            padding: 20px 24px;
             text-align: left;
             font-weight: 600;
             color: var(--text-primary);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.08);
         }
 
         thead th:first-child {
-            width: 35%;
+            width: 45%;
+        }
+
+        thead th:last-child {
+            width: 55%;
         }
 
         tbody tr {
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease;
             position: relative;
             background: white;
         }
 
-        tbody tr::before {
+        tbody tr::after {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8), transparent);
-            transition: left 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7), transparent);
             pointer-events: none;
+            opacity: 0;
         }
 
-        tbody tr:hover::before {
-            left: 100%;
+        tbody tr:hover::after {
+            animation: shine 1.2s ease-out;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; opacity: 1; }
+            100% { left: 100%; opacity: 0; }
         }
 
         tbody tr:hover {
-            background: linear-gradient(90deg, rgba(232, 245, 253, 0.8), rgba(255, 235, 238, 0.6));
-            box-shadow: 0 2px 8px rgba(30, 136, 229, 0.2);
-            transform: scale(1.01);
+            background: linear-gradient(90deg, rgba(232, 245, 253, 0.9), rgba(255, 235, 238, 0.7));
         }
 
         tbody td {
-            padding: 18px 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             vertical-align: top;
+            font-size: 0.95rem;
         }
 
         tbody tr:last-child td {
@@ -233,35 +238,39 @@
         .doc-name-cell {
             font-weight: 600;
             color: var(--text-primary);
+            line-height: 1.5;
         }
 
         .tag {
             display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
+            padding: 4px 12px;
+            border-radius: 8px;
             font-size: 0.8rem;
             font-weight: 600;
-            margin: 2px;
+            margin: 3px 4px 3px 0;
+            vertical-align: middle;
         }
 
         .tag-final {
-            background: rgba(76, 175, 80, 0.2);
+            background: rgba(76, 175, 80, 0.15);
             color: #2e7d32;
         }
 
         .tag-draft {
-            background: rgba(255, 152, 0, 0.2);
+            background: rgba(255, 152, 0, 0.15);
             color: #e65100;
         }
 
         .tag-title {
-            background: rgba(30, 136, 229, 0.2);
+            background: rgba(30, 136, 229, 0.15);
             color: #1565c0;
         }
 
+        /* СКРИНШОТЫ */
         .screenshots-grid {
-            display: grid;
-            gap: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
         .screenshot-item {
@@ -277,7 +286,6 @@
         .screenshot-item.expanded {
             box-shadow: 0 20px 60px rgba(30, 136, 229, 0.25);
             border-color: var(--pastel-blue);
-            transform: scale(1.01);
         }
 
         .screenshot-item img {
@@ -287,20 +295,20 @@
         }
 
         .screenshot-caption {
-            padding: 18px 20px;
+            padding: 20px 24px;
             background: white;
             border-top: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         .screenshot-number {
             display: inline-block;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, #e53935, #1e88e5);
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 30px;
+            line-height: 32px;
             font-weight: 600;
             font-size: 0.9rem;
             margin-right: 12px;
@@ -310,12 +318,14 @@
             font-weight: 600;
             display: inline-flex;
             align-items: center;
+            font-size: 1.1rem;
         }
 
         .screenshot-desc {
-            margin-top: 8px;
+            margin-top: 10px;
             color: var(--text-secondary);
-            padding-left: 42px;
+            padding-left: 44px;
+            font-size: 1rem;
         }
 
         footer {
@@ -556,7 +566,7 @@
                 
                 setTimeout(() => {
                     element.classList.add('expanded');
-                }, 400);
+                }, 500);
             }
         }
     </script>
