@@ -59,13 +59,11 @@
         .tab-slider {
             position: absolute;
             top: 8px;
-            left: 8px;
             height: calc(100% - 16px);
             background: linear-gradient(135deg, rgba(229, 57, 53, 0.25), rgba(30, 136, 229, 0.25));
             border-radius: 12px;
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
         }
 
@@ -102,11 +100,7 @@
         .tab:hover { color: var(--pastel-blue); transform: translateY(-2px); }
         .tab.active { color: var(--pastel-blue); }
 
-        .tab-logo {
-            width: 24px; height: 24px;
-            border-radius: 4px;
-            object-fit: contain;
-        }
+        .tab-logo { width: 24px; height: 24px; border-radius: 4px; object-fit: contain; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
@@ -424,40 +418,14 @@
         function updateSlider() {
             const slider = document.getElementById('tabSlider');
             const activeTab = document.querySelector('.tab.active');
-            const tabs = document.querySelectorAll('.tab');
             const container = document.querySelector('.tabs-container');
             
-            if (slider && activeTab && container && tabs.length > 0) {
+            if (slider && activeTab && container) {
                 const containerRect = container.getBoundingClientRect();
                 const activeTabRect = activeTab.getBoundingClientRect();
                 
-                // Находим ПРОТИВОПОЛОЖНУЮ вкладку (не активную)
-                let startTab = null;
-                tabs.forEach(tab => {
-                    if (!tab.classList.contains('active')) {
-                        startTab = tab;
-                    }
-                });
-                
-                if (startTab) {
-                    const startTabRect = startTab.getBoundingClientRect();
-                    
-                    // Ставим ползунок на противоположную вкладку
-                    slider.style.transition = 'none';
-                    slider.style.width = startTabRect.width + 'px';
-                    slider.style.left = (startTabRect.left - containerRect.left) + 'px';
-                    slider.style.opacity = '1';
-                    
-                    // Форсируем перерисовку
-                    slider.offsetHeight;
-                    
-                    // Плавно перемещаем к активной
-                    requestAnimationFrame(() => {
-                        slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                        slider.style.width = activeTabRect.width + 'px';
-                        slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-                    });
-                }
+                slider.style.width = activeTabRect.width + 'px';
+                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
             }
         }
 
