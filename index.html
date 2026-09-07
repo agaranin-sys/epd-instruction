@@ -69,13 +69,8 @@
             border-radius: 12px;
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            opacity: 0;
-        }
-
-        .tab-slider.visible {
-            opacity: 1;
         }
 
         .tab-slider::before {
@@ -610,32 +605,23 @@
     </div>
 
     <script>
-        // Ползунок с плавным перемещением в обе стороны
         function updateSlider() {
             const slider = document.getElementById('tabSlider');
             const activeTab = document.querySelector('.tab.active');
             const container = document.querySelector('.tabs-container');
-            const firstTab = document.querySelector('.tab');
             
-            if (slider && activeTab && container && firstTab) {
+            if (slider && activeTab && container) {
                 const containerRect = container.getBoundingClientRect();
-                const firstTabRect = firstTab.getBoundingClientRect();
                 const activeTabRect = activeTab.getBoundingClientRect();
                 
-                // Сначала ставим ползунок на первую вкладку (скрыто)
                 slider.style.transition = 'none';
-                slider.style.width = firstTabRect.width + 'px';
-                slider.style.left = (firstTabRect.left - containerRect.left) + 'px';
-                slider.style.opacity = '0';
+                slider.style.width = activeTabRect.width + 'px';
+                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
+                slider.style.opacity = '1';
                 
-                // Через 50ms плавно перемещаем к активной вкладке
                 setTimeout(() => {
-                    slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                    slider.style.width = activeTabRect.width + 'px';
-                    slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-                    slider.style.opacity = '1';
-                    slider.classList.add('visible');
-                }, 50);
+                    slider.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, 100);
             }
         }
 
