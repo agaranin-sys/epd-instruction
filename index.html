@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
     <title>Инструкция ЭПД</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        @view-transition {
+            navigation: auto;
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -65,7 +70,8 @@
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
             z-index: 1;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100px;
+            left: 8px;
         }
 
         .tab-slider::before {
