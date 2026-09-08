@@ -7,6 +7,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+        @view-transition {
+            navigation: auto;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
@@ -65,27 +69,9 @@
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
             z-index: 1;
-            /* Начальная позиция - справа (позиция EDOX) */
-            width: 120px;
-            left: 118px;
-            /* Анимация с задержкой */
-            animation: slideToEpd 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
-        }
-
-        @keyframes slideToEpd {
-            0% {
-                width: 120px;
-                left: 118px;
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                width: 100px;
-                left: 8px;
-                opacity: 1;
-            }
+            width: 100px;
+            left: 8px;
+            view-transition-name: tab-slider;
         }
 
         .tab-slider::before {
