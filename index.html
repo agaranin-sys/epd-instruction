@@ -65,8 +65,7 @@
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
             z-index: 1;
-            width: 100px;
-            left: 8px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .tab-slider::before {
@@ -417,22 +416,47 @@
     </div>
 
     <script>
-        function updateSlider() {
+        function animateSlider() {
             const slider = document.getElementById('tabSlider');
             const activeTab = document.querySelector('.tab.active');
+            const tabs = document.querySelectorAll('.tab');
             const container = document.querySelector('.tabs-container');
             
-            if (slider && activeTab && container) {
-                const containerRect = container.getBoundingClientRect();
-                const activeTabRect = activeTab.getBoundingClientRect();
-                
+            if (!slider || !activeTab || !container || tabs.length === 0) return;
+            
+            const containerRect = container.getBoundingClientRect();
+            const activeTabRect = activeTab.getBoundingClientRect();
+            
+            // Находим противоположную вкладку (не активную)
+            let startTab = null;
+            tabs.forEach(tab => {
+                if (!tab.classList.contains('active')) {
+                    startTab = tab;
+                }
+            });
+            
+            if (!startTab) return;
+            
+            const startTabRect = startTab.getBoundingClientRect();
+            
+            // Ставим ползунок на противоположную вкладку БЕЗ анимации
+            slider.style.transition = 'none';
+            slider.style.width = startTabRect.width + 'px';
+            slider.style.left = (startTabRect.left - containerRect.left) + 'px';
+            
+            // Форсируем перерисовку
+            slider.offsetHeight;
+            
+            // Запускаем анимацию к активной вкладке
+            requestAnimationFrame(() => {
+                slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 slider.style.width = activeTabRect.width + 'px';
                 slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-            }
+            });
         }
 
-        window.addEventListener('load', updateSlider);
-        window.addEventListener('resize', updateSlider);
+        window.addEventListener('load', animateSlider);
+        window.addEventListener('resize', animateSlider);
 
         function scrollToScreenshot(screenshotId) {
             const element = document.getElementById(screenshotId);
