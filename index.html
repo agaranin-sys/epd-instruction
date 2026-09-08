@@ -7,10 +7,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        @view-transition {
-            navigation: auto;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
@@ -71,7 +67,6 @@
             z-index: 1;
             width: 100px;
             left: 8px;
-            view-transition-name: tab-slider;
         }
 
         .tab-slider::before {
@@ -422,6 +417,23 @@
     </div>
 
     <script>
+        function updateSlider() {
+            const slider = document.getElementById('tabSlider');
+            const activeTab = document.querySelector('.tab.active');
+            const container = document.querySelector('.tabs-container');
+            
+            if (slider && activeTab && container) {
+                const containerRect = container.getBoundingClientRect();
+                const activeTabRect = activeTab.getBoundingClientRect();
+                
+                slider.style.width = activeTabRect.width + 'px';
+                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
+            }
+        }
+
+        window.addEventListener('load', updateSlider);
+        window.addEventListener('resize', updateSlider);
+
         function scrollToScreenshot(screenshotId) {
             const element = document.getElementById(screenshotId);
             if (element) {
