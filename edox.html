@@ -19,6 +19,8 @@
             --text-secondary: #4a4a6a;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 25%, #ffebee 50%, #e3f2fd 75%, #ffffff 100%);
@@ -26,6 +28,7 @@
             animation: gradientBG 15s ease infinite;
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         @keyframes gradientBG {
@@ -91,7 +94,7 @@
             font-weight: 600;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -101,10 +104,20 @@
             cursor: pointer;
         }
 
-        .tab:hover { color: var(--pastel-blue); transform: translateY(-2px); }
+        .tab:hover { 
+            color: var(--pastel-blue); 
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(30, 136, 229, 0.2);
+        }
+
         .tab.active { color: var(--pastel-blue); }
 
-        .tab-logo { width: 24px; height: 24px; border-radius: 4px; object-fit: contain; }
+        .tab-logo { 
+            width: 24px; 
+            height: 24px; 
+            border-radius: 4px; 
+            object-fit: contain;
+        }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
 
@@ -117,9 +130,16 @@
             padding: 60px 40px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 32px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .edox-logo-large { width: 80px; height: 80px; border-radius: 16px; object-fit: contain; }
@@ -141,24 +161,54 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 30px; color: var(--text-primary); }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 { 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            margin-bottom: 30px; 
+            color: var(--text-primary);
+        }
 
         .edox-link-card {
             background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(76, 175, 80, 0.1));
             border: 2px solid rgba(30, 136, 229, 0.2);
-            border-radius: 16px;
-            padding: 35px;
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
             margin-bottom: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .edox-link-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .edox-link-card:hover { 
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(30, 136, 229, 0.25);
+        }
+
+        .edox-link { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            color: var(--edox-blue); 
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .edox-link-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(30, 136, 229, 0.2); }
-
-        .edox-link { font-size: 1.4rem; font-weight: 700; color: var(--edox-blue); text-decoration: none; transition: all 0.3s ease; }
-        .edox-link:hover { color: var(--edox-green); }
+        .edox-link:hover { color: var(--edox-green); transform: scale(1.05); }
 
         .status-container { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
 
@@ -168,6 +218,13 @@
             padding: 40px;
             border: 4px solid;
             transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .status-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .status-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
@@ -218,6 +275,13 @@
             border: 3px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .error-screenshot-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .error-screenshot-item:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15); }
@@ -232,7 +296,20 @@
             border-top: 2px solid rgba(255, 255, 255, 0.6);
         }
 
-        footer { text-align: center; padding: 30px; color: var(--text-secondary); }
+        footer { 
+            text-align: center; 
+            padding: 40px; 
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        footer.visible { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) { .edox-title { font-size: 2.5rem; } .status-card { padding: 30px 20px; } }
     </style>
@@ -246,6 +323,7 @@
                 <img src="edox-logo.png" alt="EDOX" class="tab-logo">
                 EDOX
             </a>
+            <a href="diadoc.html" class="tab" data-tab="diadoc">Диадок</a>
         </div>
     </nav>
 
@@ -255,7 +333,7 @@
             <h1 class="edox-title">Edox</h1>
         </div>
 
-        <section class="section">
+        <section class="section" data-animate>
             <div class="edox-link-card">
                 <a href="https://transport.edox.fmlogistic.ru/" target="_blank" class="edox-link">Перейти на портал EDOX</a>
             </div>
@@ -263,7 +341,7 @@
             <h2>Статусы документов в EDOX</h2>
             
             <div class="status-container">
-                <div class="status-card green">
+                <div class="status-card green" data-animate>
                     <div class="status-header">
                         <div class="status-icon">✓</div>
                         <div>
@@ -274,9 +352,9 @@
                     <img src="edox-green.png" alt="Зелёный статус" class="status-screenshot">
                 </div>
 
-                <div class="status-card blue">
+                <div class="status-card blue" data-animate>
                     <div class="status-header">
-                        <div class="status-icon">⟳</div>
+                        <div class="status-icon"></div>
                         <div>
                             <h3>Голубой цвет строки</h3>
                             <p>Документ в процессе отправки</p>
@@ -285,9 +363,9 @@
                     <img src="edox-blue.png" alt="Голубой статус" class="status-screenshot">
                 </div>
 
-                <div class="status-card red">
+                <div class="status-card red" data-animate>
                     <div class="status-header">
-                        <div class="status-icon"></div>
+                        <div class="status-icon">✕</div>
                         <div>
                             <h3>Красный цвет строки</h3>
                             <p>Документ упал в ошибки</p>
@@ -300,11 +378,11 @@
             <div class="error-section">
                 <h2>Как проверить ошибку в EDOX</h2>
                 <div class="error-screenshots">
-                    <div class="error-screenshot-item">
+                    <div class="error-screenshot-item" data-animate>
                         <img src="edox-error-1.png" alt="Проверка ошибки в EDOX">
                         <div class="caption">Проверка ошибки в EDOX</div>
                     </div>
-                    <div class="error-screenshot-item">
+                    <div class="error-screenshot-item" data-animate>
                         <img src="edox-error-2.png" alt="Детали ошибки">
                         <div class="caption">Детали ошибки</div>
                     </div>
@@ -327,7 +405,6 @@
             const containerRect = container.getBoundingClientRect();
             const activeTabRect = activeTab.getBoundingClientRect();
             
-            // Находим противоположную вкладку (не активную)
             let startTab = null;
             tabs.forEach(tab => {
                 if (!tab.classList.contains('active')) {
@@ -339,15 +416,12 @@
             
             const startTabRect = startTab.getBoundingClientRect();
             
-            // Ставим ползунок на противоположную вкладку БЕЗ анимации
             slider.style.transition = 'none';
             slider.style.width = startTabRect.width + 'px';
             slider.style.left = (startTabRect.left - containerRect.left) + 'px';
             
-            // Форсируем перерисовку
             slider.offsetHeight;
             
-            // Запускаем анимацию к активной вкладке
             requestAnimationFrame(() => {
                 slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 slider.style.width = activeTabRect.width + 'px';
@@ -357,6 +431,25 @@
 
         window.addEventListener('load', animateSlider);
         window.addEventListener('resize', animateSlider);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
