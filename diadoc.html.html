@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диадок - Инструкция</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --pastel-red: #e53935;
+            --pastel-blue: #1e88e5;
+            --diadoc-color: #007bff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 25%, #ffebee 50%, #e3f2fd 75%, #ffffff 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .tabs-container {
+            position: relative;
+            display: flex;
+            gap: 10px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .tab-slider {
+            position: absolute;
+            top: 8px;
+            height: calc(100% - 16px);
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.25), rgba(0, 123, 255, 0.25));
+            border-radius: 12px;
+            border: 2px solid var(--diadoc-color);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            z-index: 1;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-slider::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: sliderShine 2.5s ease-in-out infinite;
+            border-radius: 10px;
+        }
+
+        @keyframes sliderShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .tab {
+            padding: 14px 32px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .tab:hover { 
+            color: var(--diadoc-color); 
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+        }
+
+        .tab.active { color: var(--diadoc-color); }
+
+        .tab-logo { 
+            width: 24px; 
+            height: 24px; 
+            border-radius: 4px; 
+            object-fit: contain;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        .diadoc-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .diadoc-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .diadoc-subtitle { 
+            font-size: 1.2rem; 
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 { 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            margin-bottom: 30px; 
+            color: var(--text-primary);
+        }
+
+        .diadoc-link-card {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 86, 179, 0.1));
+            border: 2px solid rgba(0, 123, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .diadoc-link-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .diadoc-link-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 123, 255, 0.25);
+        }
+
+        .diadoc-link {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--diadoc-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .diadoc-link:hover {
+            color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .screenshots-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .screenshot-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            scroll-margin-top: 120px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .screenshot-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .screenshot-item:hover {
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.25);
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--diadoc-color);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .screenshot-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .screenshot-caption {
+            padding: 28px 32px;
+            background: white;
+            border-top: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .screenshot-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-right: 16px;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .screenshot-title {
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .screenshot-desc {
+            margin-top: 12px;
+            color: var(--text-secondary);
+            padding-left: 52px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 40px; 
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        footer.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .diadoc-title { font-size: 2.5rem; }
+            .section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-tabs">
+        <div class="tabs-container">
+            <div class="tab-slider" id="tabSlider"></div>
+            <a href="index.html" class="tab" data-tab="epd">ЭПД</a>
+            <a href="edox.html" class="tab" data-tab="edox">
+                <img src="edox-logo.png" alt="EDOX" class="tab-logo">
+                EDOX
+            </a>
+            <a href="diadoc.html" class="tab active" data-tab="diadoc">Диадок</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="diadoc-header">
+            <h1 class="diadoc-title">Диадок</h1>
+            <p class="diadoc-subtitle">Как проверить формирование документа в Контур.Диадок</p>
+        </div>
+
+        <section class="section" data-animate>
+            <div class="diadoc-link-card">
+                <a href="https://diadoc.kontur.ru/" target="_blank" class="diadoc-link">
+                    <span>→</span>
+                    <span>Перейти на портал Контур.Диадок</span>
+                </a>
+            </div>
+
+            <h2>Проверка документов в Диадок</h2>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-item" data-animate>
+                    <img src="diadoc-1.png" alt="Фильтры в Диадок">
+                    <div class="screenshot-caption">
+                        <div class="screenshot-title">
+                            <span class="screenshot-number">1</span>
+                            Фильтры для поиска документов
+                        </div>
+                        <div class="screenshot-desc">
+                            Можно все документы выставить по необходимым фильтрам для удобного поиска
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screenshot-item" data-animate>
+                    <img src="diadoc-2.png" alt="Поиск по поездке">
+                    <div class="screenshot-caption">
+                        <div class="screenshot-title">
+                            <span class="screenshot-number">2</span>
+                            Поиск документа по поездке
+                        </div>
+                        <div class="screenshot-desc">
+                            Можно также найти документ по поездке
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screenshot-item" data-animate>
+                    <img src="diadoc-3.png" alt="Результат поиска">
+                    <div class="screenshot-caption">
+                        <div class="screenshot-title">
+                            <span class="screenshot-number">3</span>
+                            Результат
+                        </div>
+                        <div class="screenshot-desc">
+                            Результат поиска документов
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer><p>Система электронного документооборота Контур.Диадок</p></footer>
+    </div>
+
+    <script>
+        function animateSlider() {
+            const slider = document.getElementById('tabSlider');
+            const activeTab = document.querySelector('.tab.active');
+            const tabs = document.querySelectorAll('.tab');
+            const container = document.querySelector('.tabs-container');
+            
+            if (!slider || !activeTab || !container || tabs.length === 0) return;
+            
+            const containerRect = container.getBoundingClientRect();
+            const activeTabRect = activeTab.getBoundingClientRect();
+            
+            let startTab = null;
+            tabs.forEach(tab => {
+                if (!tab.classList.contains('active')) {
+                    startTab = tab;
+                }
+            });
+            
+            if (!startTab) return;
+            
+            const startTabRect = startTab.getBoundingClientRect();
+            
+            slider.style.transition = 'none';
+            slider.style.width = startTabRect.width + 'px';
+            slider.style.left = (startTabRect.left - containerRect.left) + 'px';
+            
+            slider.offsetHeight;
+            
+            requestAnimationFrame(() => {
+                slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                slider.style.width = activeTabRect.width + 'px';
+                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
+            });
+        }
+
+        window.addEventListener('load', animateSlider);
+        window.addEventListener('resize', animateSlider);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
