@@ -126,16 +126,16 @@
             align-items: center;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 60px;
-            padding: 60px 40px;
+            margin-bottom: 50px;
+            padding: 50px 40px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
-            border-radius: 32px;
+            border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
+            animation: fadeInUp 0.6s ease forwards;
         }
 
         @keyframes fadeInUp {
@@ -154,8 +154,8 @@
         }
 
         .section {
-            margin-bottom: 60px;
-            padding: 40px;
+            margin-bottom: 50px;
+            padding: 35px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             border-radius: 20px;
@@ -163,7 +163,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             opacity: 0;
             transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .section.visible {
@@ -182,10 +182,10 @@
             background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(76, 175, 80, 0.1));
             border: 2px solid rgba(30, 136, 229, 0.2);
             border-radius: 20px;
-            padding: 40px;
+            padding: 35px;
             text-align: center;
-            margin-bottom: 40px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 35px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             transform: translateY(20px);
         }
@@ -210,14 +210,14 @@
 
         .edox-link:hover { color: var(--edox-green); transform: scale(1.05); }
 
-        .status-container { display: flex; flex-direction: column; gap: 30px; margin-top: 10px; }
+        .status-container { display: flex; flex-direction: column; gap: 25px; margin-top: 10px; }
 
         .status-card {
             background: white;
             border-radius: 20px;
             padding: 15px;
             border: 4px solid;
-            transition: all 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             transform: translateY(30px);
         }
@@ -263,9 +263,9 @@
             border: 2px solid rgba(0, 0, 0, 0.05);
         }
 
-        .error-section { margin-top: 40px; }
+        .error-section { margin-top: 35px; }
 
-        .error-screenshots { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
+        .error-screenshots { display: flex; flex-direction: column; gap: 25px; margin-top: 15px; }
 
         .error-screenshot-item {
             background: white;
@@ -273,7 +273,7 @@
             overflow: hidden;
             border: 3px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             transform: translateY(30px);
         }
@@ -287,7 +287,7 @@
         .error-screenshot-item img { width: 100%; height: auto; display: block; }
 
         .error-screenshot-item .caption {
-            padding: 20px 24px;
+            padding: 18px 22px;
             background: white;
             font-weight: 600;
             font-size: 1.1rem;
@@ -297,15 +297,15 @@
 
         footer { 
             text-align: center; 
-            padding: 40px; 
+            padding: 35px; 
             color: var(--text-secondary);
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             border-radius: 24px;
-            margin-top: 60px;
+            margin-top: 50px;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.6s ease;
         }
 
         footer.visible { opacity: 1; transform: translateY(0); }
@@ -333,7 +333,7 @@
         </div>
 
         <section class="section" data-animate>
-            <div class="edox-link-card">
+            <div class="edox-link-card" data-animate>
                 <a href="https://transport.edox.fmlogistic.ru/" target="_blank" class="edox-link">Перейти на портал EDOX</a>
             </div>
 
