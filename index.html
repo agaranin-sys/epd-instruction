@@ -470,55 +470,27 @@
         function animateSlider() {
             const slider = document.getElementById('tabSlider');
             const activeTab = document.querySelector('.tab.active');
-            const tabs = document.querySelectorAll('.tab');
             const container = document.querySelector('.tabs-container');
             
-            if (!slider || !activeTab || !container || tabs.length === 0) return;
+            if (!slider || !activeTab || !container) return;
             
             const containerRect = container.getBoundingClientRect();
             const activeTabRect = activeTab.getBoundingClientRect();
             
-            let startTab = null;
-            tabs.forEach(tab => {
-                if (!tab.classList.contains('active')) {
-                    startTab = tab;
-                }
-            });
-            
-            if (!startTab) return;
-            
-            const startTabRect = startTab.getBoundingClientRect();
-            
-            slider.style.transition = 'none';
-            slider.style.width = startTabRect.width + 'px';
-            slider.style.left = (startTabRect.left - containerRect.left) + 'px';
-            
-            slider.offsetHeight;
-            
-            requestAnimationFrame(() => {
-                slider.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                slider.style.width = activeTabRect.width + 'px';
-                slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
-            });
+            slider.style.width = activeTabRect.width + 'px';
+            slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
         }
 
         window.addEventListener('load', animateSlider);
         window.addEventListener('resize', animateSlider);
 
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
+                    entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('[data-animate]').forEach(el => {
             observer.observe(el);
