@@ -71,7 +71,7 @@
             border: 2px solid var(--pastel-blue);
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
             z-index: 1;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            /* УБРАЛ transition */
         }
 
         .tab-slider::before {
@@ -403,6 +403,7 @@
             const containerRect = container.getBoundingClientRect();
             const activeTabRect = activeTab.getBoundingClientRect();
             
+            slider.style.transition = 'none';
             slider.style.width = activeTabRect.width + 'px';
             slider.style.left = (activeTabRect.left - containerRect.left) + 'px';
         }
